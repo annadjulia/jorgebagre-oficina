@@ -1,0 +1,18 @@
+{% extends "bloco.html" %}
+{% load static %}
+
+{% block 'titulo' %}
+    Mecânicos
+{% endblock %}
+
+{% block 'filling' %}
+    {% for mecanico in mecanicos %}
+        <a class="col" href="{{ mecanico.id }}">
+            {{ mecanico.nome }}
+        </a>
+    {% endfor %}
+{% endblock %}
+
+{% block 'numCol' %}2{% endblock %}
+
+{% block 'name' %}mecanicos{% endblock %}

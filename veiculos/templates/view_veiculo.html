@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block 'content' %}
+    {{veiculo.placa}}
+    {{veiculo.modelo}}
+    {{veiculo.descricao}}
+    <a href="/clientes/{{cliente.id}}">{{cliente.nome}}</a>
+    <a href="edit/{{veiculo.id}}" class="btn btn-primary">Editar</a>
+{% endblock %}

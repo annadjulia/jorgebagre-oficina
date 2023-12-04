@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block 'content' %}
+    {{mecanico.nome}}
+    {{mecanico.telefone}}
+    {{mecanico.email}}
+    {{mecanico.cpf}}
+    <a href="/mecanicos/edit/{{mecanico.id}}" class="btn btn-primary">Editar</a>
+{% endblock %}

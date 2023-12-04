@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block 'title' %}
+    Novo cliente
+{% endblock %}
+
+{% block 'content' %}
+<div class="row">
+    <div class="col-12 text-center">
+        <p>Novo cliente</p>
+    </div>
+    <div class="col-12">
+        <form action="/clientes/new" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" class="form-control" required>
+                </div>
+                <div class="col-12">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" name="telefone" id="telefone" class="form-control cel-sp-mask" placeholder="Ex.: (00) 0000-0000" required>
+                </div>
+                <div class="col-12">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                </div>
+                <div class="col-12">
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00" required>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

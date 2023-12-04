@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block 'content' %}
+    {{cliente.nome}}
+    {{cliente.telefone}}
+    {{cliente.email}}
+    {{cliente.cpf}}
+    carros:
+    {% for veiculo in cliente.veiculo_set.all %}
+        <a href="/veiculos/{{veiculo.id}}">{{veiculo.placa}}</a>
+    {% endfor %}
+    <a href="/clientes/edit/{{cliente.id}}" class="btn btn-primary">Editar</a>
+{% endblock %}

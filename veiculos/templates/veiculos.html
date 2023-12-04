@@ -1,0 +1,22 @@
+{% extends "bloco.html" %}
+{% load static %}
+
+{% block 'head' %}
+    <title>Veículos</title>
+{% endblock %}
+
+{% block 'titulo' %}
+    Veículos
+{% endblock %}
+
+{% block 'filling' %}
+    {% for veiculo in veiculos %}
+        <a class="col" href="{{ veiculo.id }}">
+            {{ veiculo.placa }}
+        </a>
+    {% endfor %}
+{% endblock %}
+
+{% block 'numCol' %}3{% endblock %}
+
+{% block 'name' %}veiculos{% endblock %}

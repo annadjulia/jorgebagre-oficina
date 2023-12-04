@@ -1,0 +1,18 @@
+{% extends "bloco.html" %}
+{% load static %}
+
+{% block 'titulo' %}
+    Equipes
+{% endblock %}
+
+{% block 'filling' %}
+    {% for equipe in equipes %}
+        <a class="col" href="{{ equipe.id }}">
+            {{ equipe.nome }}
+        </a>
+    {% endfor %}
+{% endblock %}
+
+{% block 'numCol' %}2{% endblock %}
+
+{% block 'name' %}equipes{% endblock %}

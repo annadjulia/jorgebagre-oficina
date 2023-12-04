@@ -1,0 +1,8 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block 'content' %}
+    {{equipe.nome}}
+    <a href="/equipes/edit/{{equipe.id}}" class="btn btn-primary">Editar</a>
+{% endblock %}

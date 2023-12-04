@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block 'content' %}
+<div class="row">
+    <div class="col-12 text-center">
+        <p>Editar veículo</p>
+    </div>
+    <div class="col-12">
+        <form action="/veiculos/edit/{{veiculo.id}}" method="POST">
+
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-12">
+                    <label for="cliente_id">Cliente</label>
+                    <select name="cliente_id" id="cliente_id" class="form-control" required>
+                        <option value=""></option>
+                        {% for cliente in clientes %}
+                        <option value="{{ cliente.id }}" {% if cliente.id == veiculo.cliente_id %}selected{% endif %}>{{ cliente.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="placa">Placa</label>
+                    <input type="text" name="placa" id="placa" class="form-control" required>
+                </div>
+                <div class="col-12">
+                    <label for="modelo">Modelo</label>
+                    <input type="text" name="modelo" id="modelo" class="form-control" required>
+                </div>
+                <div class="col-12">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" name="descricao" id="descricao" class="form-control" required>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4">
+                <a href="/veiculos/delete/{{veiculo.id}}" class="btn btn-dark">Excluir</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

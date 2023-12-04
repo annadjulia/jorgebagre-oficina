@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block 'title' %}
+    Editar cliente
+{% endblock %}
+
+{% block 'content' %}
+<div class="row">
+    <div class="col-12 text-center">
+        <p>Editar cliente</p>
+    </div>
+    <div class="col-12">
+        <form action="/clientes/edit/{{cliente.id}}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" class="form-control" placeholder="{{cliente.nome}}" value="{{cliente.nome}}">
+                </div>
+                <div class="col-12">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" name="telefone" id="telefone" class="form-control cel-sp-mask" placeholder="{{cliente.telefone}}" value="{{cliente.telefone}}">
+                </div>
+                <div class="col-12">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="{{cliente.email}}" value="{{cliente.email}}">
+                </div>
+                <div class="col-12">
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="{{cliente.cpf}}" value="{{cliente.cpf}}">
+                </div>
+            </div>
+            <div class="row justify-content-center py-4">
+                <a href="/clientes/delete/{{cliente.id}}" class="btn btn-dark">Excluir</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block 'title' %}
+    Editar equipe
+{% endblock %}
+
+{% block 'content' %}
+<div class="row">
+    <div class="col-12 text-center">
+        <p>Editar equipe</p>
+    </div>
+    <div class="col-12">
+        <form action="/equipes/edit/{{equipe.id}}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" class="form-control" placeholder="{{equipe.nome}}" value="{{equipe.nome}}">
+                </div>
+            </div>
+            <div class="row justify-content-center py-4">
+                <a href="/equipes/delete/{{equipe.id}}" class="btn btn-dark">Excluir</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
