@@ -1,0 +1,23 @@
+{% extends "bloco.html" %}
+{% load static %}
+
+{% block 'titulo' %}
+Peças
+{% endblock %}
+
+{% block 'title' %}
+Peças
+{% endblock %}
+
+{% block 'filling' %}
+{% for peca in pecas %}
+<a class="col p-2 my-2 rounded bg-dark" href="{{ peca.id }}">
+    {{ peca.nome }}
+    {{ peca.preco }}
+</a>
+{% endfor %}
+{% endblock %}
+
+{% block 'numCol' %}1{% endblock %}
+
+{% block 'name' %}pecas{% endblock %}

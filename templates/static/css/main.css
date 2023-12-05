@@ -11,7 +11,17 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    position: fixed;
 }
 p{
     margin: 0;
+}
+label{
+    margin-top: 1em;
+}
+.bg-dark{
+    color: white;
+}
+.btn{
+    margin: 0 0.5em;
 }

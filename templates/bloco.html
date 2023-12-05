@@ -4,16 +4,16 @@
 {% block 'content' %}
 <div class="row">
     <div class="col-12 text-center">
-        <p>
+        <h2>
             {% block 'titulo' %}
             {% endblock %}
-        </p>
+        </h2>
     </div>
     <a class="col-12 rounded bg-dark text-center py-3 my-4" href="/{% block 'name' %}{% endblock %}/new">
         +
     </a>
     <div class="col-12">
-        <div class="row row-cols-{% block 'numCol' %} {% endblock %}">
+        <div class="row justify-content-between row-cols-{% block 'numCol' %} {% endblock %}">
             {% block 'filling' %}
                 
             {% endblock %}

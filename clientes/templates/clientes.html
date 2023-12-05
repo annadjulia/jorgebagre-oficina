@@ -5,14 +5,18 @@
     Clientes
 {% endblock %}
 
+{% block 'title' %}
+    Clientes
+{% endblock %}
+
 {% block 'filling' %}
     {% for cliente in clientes %}
-        <a class="col" href="{{ cliente.id }}">
+        <a class="col p-2 my-2 rounded bg-dark" href="{{ cliente.id }}">
             {{ cliente.nome }}
         </a>
     {% endfor %}
 {% endblock %}
 
-{% block 'numCol' %}2{% endblock %}
+{% block 'numCol' %}1{% endblock %}
 
 {% block 'name' %}clientes{% endblock %}

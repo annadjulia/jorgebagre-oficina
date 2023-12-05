@@ -1,8 +1,8 @@
 {% extends "bloco.html" %}
 {% load static %}
 
-{% block 'head' %}
-    <title>Veículos</title>
+{% block 'title' %}
+    Veículos
 {% endblock %}
 
 {% block 'titulo' %}
@@ -11,12 +11,12 @@
 
 {% block 'filling' %}
     {% for veiculo in veiculos %}
-        <a class="col" href="{{ veiculo.id }}">
+        <a class="col p-2 my-2 rounded bg-dark" href="{{ veiculo.id }}">
             {{ veiculo.placa }}
         </a>
     {% endfor %}
 {% endblock %}
 
-{% block 'numCol' %}3{% endblock %}
+{% block 'numCol' %}1{% endblock %}
 
 {% block 'name' %}veiculos{% endblock %}

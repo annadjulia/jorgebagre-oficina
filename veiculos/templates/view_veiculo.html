@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block 'title' %}
+    #{{veiculo.placa}}
+{% endblock %}
+
 {% block 'content' %}
     {{veiculo.placa}}
     {{veiculo.modelo}}

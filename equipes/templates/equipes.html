@@ -4,15 +4,18 @@
 {% block 'titulo' %}
     Equipes
 {% endblock %}
+{% block 'title' %}
+    Equipes
+{% endblock %}
 
 {% block 'filling' %}
     {% for equipe in equipes %}
-        <a class="col" href="{{ equipe.id }}">
+        <a class="col p-2 my-2 rounded bg-dark" href="{{ equipe.id }}">
             {{ equipe.nome }}
         </a>
     {% endfor %}
 {% endblock %}
 
-{% block 'numCol' %}2{% endblock %}
+{% block 'numCol' %}1{% endblock %}
 
 {% block 'name' %}equipes{% endblock %}

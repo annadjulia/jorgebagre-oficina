@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block 'title' %}
+    {{peca.nome}}
+{% endblock %}
+
+{% block 'content' %}
+    {{peca.nome}}
+    {{peca.preco}}
+    <a href="/pecas/edit/{{peca.id}}" class="btn btn-primary">Editar</a>
+{% endblock %}

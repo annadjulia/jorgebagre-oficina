@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block 'title' %}
+    {{ordem.nome}}
+{% endblock %}
+
+{% block 'content' %}
+    {{ordem.nome}}
+    {{ordem.telefone}}
+    {{ordem.email}}
+    {{ordem.cpf}}
+    <a href="/ordens/edit/{{ordem.id}}" class="btn btn-primary">Editar</a>
+{% endblock %}

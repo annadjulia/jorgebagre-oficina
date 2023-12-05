@@ -5,11 +5,13 @@ from equipes.models import Equipe
 
 # Create your views here.
 def mecanicos(request):
-    return render(request, 'mecanicos.html')
+    mecanicos = Mecanico.objects.all()
+    return render(request, 'mecanicos.html', {'mecanicos': mecanicos})
 
 def new_mecanico(request):
+    equipes = Equipe.objects.all()
     if request.method == 'GET':
-        return render(request, 'new_mecanico.html')
+        return render(request, 'new_mecanico.html', {'equipes': equipes})
     elif request.method == 'POST':
         nome = request.POST.get('nome')
         email = request.POST.get('email')
@@ -49,8 +51,9 @@ def view_mecanico(request, id):
 
 def edit_mecanico(request, id):
     mecanico = Mecanico.objects.get(id=id)
+    equipes = Equipe.objects.all()
     if request.method == 'GET':
-        return render(request, 'edit_mecanico.html', {'mecanico': mecanico})
+        return render(request, 'edit_mecanico.html', {'mecanico': mecanico, 'equipes': equipes})
     elif request.method == 'POST':
         nome = request.POST.get('nome')
         email = request.POST.get('email')
@@ -63,19 +66,22 @@ def edit_mecanico(request, id):
         busca_mecanico = Mecanico.objects.filter(cpf=cpf)
         if busca_mecanico.exists():
             print('Mecanico já cadastrado.')
-            return render(request, 'new_mecanico.html', {'msg': 'Mecanico já cadastrado.', 'msgType': 'error', 'mecanico': mecanico})
+            return render(request, 'edit_mecanico.html', {'msg': 'Mecanico já cadastrado.', 'msgType': 'error', 'mecanico': mecanico})
         elif len(cpf) != 14:
             print('CPF inválido.'+cpf)
-            return render(request, 'new_mecanico.html', {'msg': 'CPF inválido.', 'msgType': 'error', 'mecanico': mecanico})
+            return render(request, 'edit_mecanico.html', {'msg': 'CPF inválido.', 'msgType': 'error', 'mecanico': mecanico})
         elif len(telefone) != 15:
             print('Telefone inválido.')
-            return render(request, 'new_mecanico.html', {'msg': 'Telefone inválido.', 'msgType': 'error', 'mecanico': mecanico})
+            return render(request, 'edit_mecanico.html', {'msg': 'Telefone inválido.', 'msgType': 'error', 'mecanico': mecanico})
         elif len(nome) < 3:
             print('Nome inválido.')
-            return render(request, 'new_mecanico.html', {'msg': 'Nome inválido.', 'msgType': 'error', 'mecanico': mecanico})
+            return render(request, 'edit_mecanico.html', {'msg': 'Nome inválido.', 'msgType': 'error', 'mecanico': mecanico})
         elif len(email) < 3:
             print('Email inválido.')
-            return render(request, 'new_mecanico.html', {'msg': 'Email inválido.', 'msgType': 'error', 'mecanico': mecanico})
+            return render(request, 'edit_mecanico.html', {'msg': 'Email inválido.', 'msgType': 'error', 'mecanico': mecanico})
+        elif equipe_id == '0':
+            print('Selecione uma equipe.')
+            return render(request, 'edit_mecanico.html', {'msg': 'Selecione uma equipe.', 'msgType': 'error', 'mecanico': mecanico})
         
         mecanico = Mecanico(nome=nome, email=email, cpf=cpf, telefone=telefone, especialidade=especialidade, equipe_id=equipe_id)
         mecanico.save()

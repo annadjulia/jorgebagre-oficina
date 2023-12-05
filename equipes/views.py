@@ -32,11 +32,12 @@ def new_equipe(request):
 def view_equipe(request, id):
     equipe = Equipe.objects.get(id=id)
     mecanicos = Mecanico.objects.filter(equipe_id=id)
-    return render(request, 'edit_equipe.html', {'equipe': equipe, 'mecanicos': mecanicos})
+    return render(request, 'view_equipe.html', {'equipe': equipe, 'mecanicos': mecanicos})
 
 def edit_equipe(request, id):
+    equipe = Equipe.objects.get(id=id)
     if request.method == 'GET':
-        return render(request, 'new_equipe.html')
+        return render(request, 'edit_equipe.html')
     elif request.method == 'POST':
         nome = request.POST.get('nome')
         print(nome)
@@ -44,15 +45,15 @@ def edit_equipe(request, id):
         busca_equipe = Equipe.objects.filter(nome=nome)
         if busca_equipe.exists():
             print('Equipe já cadastrada.')
-            return render(request, 'new_equipe.html', {'msg': 'Equipe já cadastrada.', 'msgType': 'error', 'equipe': equipe})
+            return render(request, 'edit_equipe.html', {'msg': 'Equipe já cadastrada.', 'msgType': 'error', 'equipe': equipe})
         elif len(nome) < 3:
             print('Nome inválido.')
-            return render(request, 'new_equipe.html', {'msg': 'Nome inválido.', 'msgType': 'error', 'equipe': equipe})
+            return render(request, 'edit_equipe.html', {'msg': 'Nome inválido.', 'msgType': 'error', 'equipe': equipe})
         
         equipe = Equipe(nome=nome)
         equipe.save()
 
-        return HttpResponseRedirect('/equipes', {'msg': 'Equipe cadastrada com sucesso.', 'msgType': 'success', 'equipes': equipes})
+        return HttpResponseRedirect('/equipes', {'msg': 'Equipe cadastrada com sucesso.', 'msgType': 'success'})
 
 def delete_equipe(request, id):
     equipe = Equipe.objects.get(id=id)

@@ -8,7 +8,7 @@
 {% block 'content' %}
 <div class="row">
     <div class="col-12 text-center">
-        <p>Novo mecânico</p>
+        <h3>Novo mecânico</h3>
     </div>
     <div class="col-12">
         <form action="/mecanicos/new" method="POST">
@@ -36,8 +36,8 @@
                 </div>
                 <div class="col-12">
                     <label for="equipe">Equipe</label>
-                    <select name="equipe_id" id="equipe_id" class="form-control">
-                        <option value="0">Nenhuma</option>
+                    <select name="equipe_id" id="equipe_id" class="form-control" required>
+                        <option value=""></option>
                         {% for equipe in equipes %}
                         <option value="{{ equipe.id }}">{{ equipe.nome }}</option>
                         {% endfor %}

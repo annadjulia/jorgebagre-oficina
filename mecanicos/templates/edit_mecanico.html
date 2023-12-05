@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block 'title' %}
-    Editar mecanico
+    Editar mecânico
 {% endblock %}
 
 {% block 'content' %}
 <div class="row">
     <div class="col-12 text-center">
-        <p>Editar mecanico</p>
+        <h3>Editar mecânico</h3>
     </div>
     <div class="col-12">
         <form action="/mecanicos/edit/{{mecanico.id}}" method="POST">
@@ -16,19 +16,32 @@
             <div class="row">
                 <div class="col-12">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome" class="form-control" placeholder="{{mecanico.nome}}" value="{{mecanico.nome}}">
+                    <input type="text" name="nome" id="nome" class="form-control" placeholder="{{mecanico.nome}}" value="{{mecanico.nome}}" required>
                 </div>
                 <div class="col-12">
                     <label for="telefone">Telefone</label>
-                    <input type="text" name="telefone" id="telefone" class="form-control cel-sp-mask" placeholder="{{mecanico.telefone}}" value="{{mecanico.telefone}}">
+                    <input type="text" name="telefone" id="telefone" class="form-control cel-sp-mask" placeholder="{{mecanico.telefone}}" value="{{mecanico.telefone}}" required>
                 </div>
                 <div class="col-12">
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="{{mecanico.email}}" value="{{mecanico.email}}">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="{{mecanico.email}}" value="{{mecanico.email}}" required>
                 </div>
                 <div class="col-12">
                     <label for="cpf">CPF</label>
-                    <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="{{mecanico.cpf}}" value="{{mecanico.cpf}}">
+                    <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="{{mecanico.cpf}}" value="{{mecanico.cpf}}" required>
+                </div>
+                <div class="col-12">
+                    <label for="especialidade">Especialidade</label>
+                    <input type="text" name="especialidade" id="especialidade" class="form-control" placeholder="{{mecanico.especialidade}}" value="{{mecanico.especialidade}}" required>
+                </div>
+                <div class="col-12">
+                    <label for="equipe">Equipe</label>
+                    <select name="equipe_id" id="equipe_id" class="form-control" required>
+                        <option value=""></option>
+                        {% for equipe in equipes %}
+                        <option value="{{ equipe.id }}" {% if equipe.id == mecanico.equipe_id %}selected{% endif %}>{{ equipe.nome }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
             </div>
             <div class="row justify-content-center py-4">

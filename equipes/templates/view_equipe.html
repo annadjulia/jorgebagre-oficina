@@ -2,7 +2,34 @@
 
 {% load static %}
 
-{% block 'content' %}
+{% block 'title' %}
     {{equipe.nome}}
-    <a href="/equipes/edit/{{equipe.id}}" class="btn btn-primary">Editar</a>
+{% endblock %}
+
+{% block 'content' %}
+    <div class="row">
+        <div class="col">
+            <div class="col">
+                <h3>Equipe: <strong>{{equipe.nome}}</strong></h3>
+            </div>
+            <br>
+            <div class="col">
+                <h3>Mecânicos:</h3>
+                <div class="row justify-content-between">
+                    {% if equipe.mecanico_set.all %}
+                    {% for mecanico in equipe.mecanico_set.all %}
+                        <a href="/mecanicos/{{mecanico.id}}" class="col-12 p-2 my-2 rounded bg-dark">
+                            <p>{{mecanico.nome}}</p>
+                        </a>
+                    {% endfor %}
+                    {% else %}
+                        <h4>Nenhum mecânico cadastrado</h4>
+                    {% endif %}
+                </div>
+                <div class="row justify-content-center py-4">
+                    <a href="/equipes/edit/{{equipe.id}}" class="btn btn-primary">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,0 +1,23 @@
+{% extends "bloco.html" %}
+{% load static %}
+
+{% block 'titulo' %}
+Serviços
+{% endblock %}
+
+{% block 'title' %}
+Serviços
+{% endblock %}
+
+{% block 'filling' %}
+{% for servico in servicos %}
+<a class="col p-2 my-2 rounded bg-dark" href="{{ servico.id }}">
+    {{ servico.nome }}
+    {{ servico.preco }}
+</a>
+{% endfor %}
+{% endblock %}
+
+{% block 'numCol' %}1{% endblock %}
+
+{% block 'name' %}servicos{% endblock %}

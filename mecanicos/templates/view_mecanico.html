@@ -2,10 +2,32 @@
 
 {% load static %}
 
-{% block 'content' %}
+{% block 'title' %}
     {{mecanico.nome}}
-    {{mecanico.telefone}}
-    {{mecanico.email}}
-    {{mecanico.cpf}}
-    <a href="/mecanicos/edit/{{mecanico.id}}" class="btn btn-primary">Editar</a>
+{% endblock %}
+
+{% block 'content' %}
+<div class="row">
+    <div class="col">
+        <div class="col">
+            <h3>Mecânico: <strong>{{mecanico.nome}}</strong></h3>
+            <h3>CPF: <strong>{{mecanico.cpf}}</strong></h3>
+            <h3>Telefone: <strong>{{mecanico.telefone}}</strong></h3>
+            <h3>Email: <strong>{{mecanico.email}}</strong></h3>
+            <h3>Especialidade: <strong>{{mecanico.especialidade}}</strong></h3>
+        </div>
+        <br>
+        <div class="col">
+            <h3>Equipe:</h3>
+            <div class="row justify-content-between">
+                <a href="/equipes/{{equipe.id}}" class="col-4 p-2 rounded bg-dark">
+                    <p>{{equipe.nome}}</p>
+                </a>
+            </div>
+            <div class="row justify-content-center py-4">
+                <a href="/mecanicos/edit/{{mecanico.id}}" class="btn btn-primary">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

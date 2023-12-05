@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block 'title' %}
+    Editar ordem
+{% endblock %}
+
+{% block 'content' %}
+<div class="row">
+    <div class="col-12 text-center">
+        <p>Editar ordem</p>
+    </div>
+    <div class="col-12">
+        <form action="/ordens/edit/{{ordem.id}}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" class="form-control" placeholder="{{ordem.nome}}" value="{{ordem.nome}}">
+                </div>
+                <div class="col-12">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" name="telefone" id="telefone" class="form-control cel-sp-mask" placeholder="{{ordem.telefone}}" value="{{ordem.telefone}}">
+                </div>
+                <div class="col-12">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="{{ordem.email}}" value="{{ordem.email}}">
+                </div>
+                <div class="col-12">
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="{{ordem.cpf}}" value="{{ordem.cpf}}">
+                </div>
+            </div>
+            <div class="row justify-content-center py-4">
+                <a href="/ordens/delete/{{ordem.id}}" class="btn btn-dark">Excluir</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

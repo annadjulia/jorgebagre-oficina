@@ -5,14 +5,18 @@
     Mecânicos
 {% endblock %}
 
+{% block 'title' %}
+    Mecânicos
+{% endblock %}
+
 {% block 'filling' %}
     {% for mecanico in mecanicos %}
-        <a class="col" href="{{ mecanico.id }}">
+        <a class="col p-2 my-2 rounded bg-dark" href="{{ mecanico.id }}">
             {{ mecanico.nome }}
         </a>
     {% endfor %}
 {% endblock %}
 
-{% block 'numCol' %}2{% endblock %}
+{% block 'numCol' %}1{% endblock %}
 
 {% block 'name' %}mecanicos{% endblock %}

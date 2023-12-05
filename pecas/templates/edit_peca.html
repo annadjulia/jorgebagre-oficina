@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block 'title' %}
+    Editar peca
+{% endblock %}
+
+{% block 'content' %}
+<div class="row">
+    <div class="col-12 text-center">
+        <p>Editar peca</p>
+    </div>
+    <div class="col-12">
+        <form action="/pecas/edit/{{peca.id}}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" class="form-control" placeholder="{{peca.nome}}" value="{{peca.nome}}">
+                </div>
+                <div class="col-12">
+                    <label for="preco">Preço</label>
+                    <input type="number" name="preco" id="preco" class="form-control" required>
+                </div> 
+            </div>
+            <div class="row justify-content-center py-4">
+                <a href="/pecas/delete/{{peca.id}}" class="btn btn-dark">Excluir</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

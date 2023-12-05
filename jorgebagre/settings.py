@@ -14,8 +14,8 @@ SECRET_KEY = 'django-insecure-qj9g!5tvbjtr2b^&++1@t!vqklv07^dig(d&sn$qudd%9&py+7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS=['https://*.onrender.com', 'https://*.127.0.0.1']
 
 # Application definition
 
@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'veiculos',
     'mecanicos',
     'equipes',
+    'ordens',
+    'pecas',
+    'servicos',
 ]
 
 MIDDLEWARE = [
@@ -70,11 +73,11 @@ WSGI_APPLICATION = 'jorgebagre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jorgebagre',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',  # Ou o endereço do seu servidor MySQL
-        'PORT': '3306',  # Porta padrão do MySQL
+        'NAME': 'defaultdb',
+        'USER': 'doadmin',
+        'PASSWORD': 'AVNS_7rt7XpG6K_6D-H2pGXQ',
+        'HOST': 'db-mysql-nyc3-82222-do-user-15310791-0.c.db.ondigitalocean.com',
+        'PORT': '25060', 
     }
 }
 

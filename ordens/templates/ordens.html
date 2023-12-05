@@ -1,0 +1,22 @@
+{% extends "bloco.html" %}
+{% load static %}
+
+{% block 'titulo' %}
+Ordens de serviços
+{% endblock %}
+
+{% block 'title' %}
+Ordens de Serviço
+{% endblock %}
+
+{% block 'filling' %}
+{% for ordem in ordens %}
+<a class="col" href="{{ ordem.id }}">
+    {{ ordem.nome }}
+</a>
+{% endfor %}
+{% endblock %}
+
+{% block 'numCol' %}1{% endblock %}
+
+{% block 'name' %}ordens{% endblock %}
