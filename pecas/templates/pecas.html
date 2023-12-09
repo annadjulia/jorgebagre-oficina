@@ -12,7 +12,7 @@ Peças
 {% block 'filling' %}
 {% for peca in pecas %}
 <a class="col p-2 my-2 rounded bg-dark" href="{{ peca.id }}">
-    {{ peca.nome }}
+    {{ peca.nome }} - R$ 
     {{ peca.preco }}
 </a>
 {% endfor %}

@@ -17,8 +17,8 @@ def new_ordem(request):
     clientes = Cliente.objects.all()
     veiculos = Veiculo.objects.all()
     equipes = Equipe.objects.all()
-    pecas = Peca.objects.all()
-    servicos = Servico.objects.all()
+    #pecas = Peca.objects.all()
+    #servicos = Servico.objects.all()
     if request.method == 'GET':
         return render(request, 'new_ordem.html', {'clientes': clientes, 'veiculos': veiculos, 'equipes': equipes, 'pecas': pecas, 'servicos': servicos})
     elif request.method == 'POST':

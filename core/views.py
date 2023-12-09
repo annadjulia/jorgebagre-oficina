@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Admin
 from ordens.models import Ordem
+from django.db.models import Sum
 
 # Create your views here.
 def login(request):
@@ -22,8 +23,12 @@ def login(request):
 
 def dashboard(request):
     ordens = Ordem.objects.all()
-    numOrdens = Ordem.objects.count()
-    totalOrdens = Ordem.objects.all().aggregate(totalOrdens=models.Sum('valor'))
+    if ordens:
+        numOrdens = ordens.count()
+        totalOrdens = ordens.aggregate(total=Sum('valor'))['total']
+    else:
+        numOrdens = 0
+        totalOrdens = 0
     return render(request, 'dashboard.html', {'ordens': ordens, 'numOrdens': numOrdens, 'totalOrdens': totalOrdens})
 
 def faturamento(request):

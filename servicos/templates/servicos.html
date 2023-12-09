@@ -12,7 +12,7 @@ Serviços
 {% block 'filling' %}
 {% for servico in servicos %}
 <a class="col p-2 my-2 rounded bg-dark" href="{{ servico.id }}">
-    {{ servico.nome }}
+    {{ servico.nome }} - R$ 
     {{ servico.preco }}
 </a>
 {% endfor %}

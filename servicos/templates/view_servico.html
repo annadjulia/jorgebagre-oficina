@@ -7,7 +7,17 @@
 {% endblock %}
 
 {% block 'content' %}
-    {{servico.nome}}
-    {{servico.preco}}
-    <a href="/servicos/edit/{{servico.id}}" class="btn btn-primary">Editar</a>
+<div class="row">
+    <div class="col">
+        <div class="col">
+            <h3>Nome: <strong>{{servico.nome}}</strong></h3>
+            <h3>Preço: <strong>{{servico.preco}}</strong></h3>
+        </div>
+        <div class="col">
+            <div class="row justify-content-center py-4">
+                <a href="/servicos/edit/{{servico.id}}" class="btn btn-primary">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

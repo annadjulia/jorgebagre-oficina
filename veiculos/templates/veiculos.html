@@ -12,7 +12,8 @@
 {% block 'filling' %}
     {% for veiculo in veiculos %}
         <a class="col p-2 my-2 rounded bg-dark" href="{{ veiculo.id }}">
-            {{ veiculo.placa }}
+            #{{ veiculo.placa }} - {{ veiculo.modelo }} - De {{ veiculo.cliente.nome }}
+
         </a>
     {% endfor %}
 {% endblock %}
