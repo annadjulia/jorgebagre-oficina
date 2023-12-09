@@ -7,9 +7,34 @@
 {% endblock %}
 
 {% block 'content' %}
-    {{veiculo.placa}}
-    {{veiculo.modelo}}
-    {{veiculo.descricao}}
-    <a href="/clientes/{{cliente.id}}">{{cliente.nome}}</a>
-    <a href="edit/{{veiculo.id}}" class="btn btn-primary">Editar</a>
+<div class="row">
+    <div class="col">
+        <div class="col">
+            <h3>Placa: <strong>#{{veiculo.placa}}</strong></h3>
+            <h3>Modelo: <strong>{{veiculo.modelo}}</strong></h3>
+            <h3>Descricao: <strong>{{veiculo.descricao}}</strong></h3>
+            <h3>Cliente: <strong><a href="/clientes/{{cliente.id}}">{{cliente.nome}}</a></strong></h3>
+        </div>
+        <br>
+        <div class="col">
+            <h3>Ordens de serviço:</h3>
+            <div class="row justify-content-between">
+                {% if veiculo.ordens_set.all %}
+                {% for ordem in veiculo.ordens_set.all %}
+                    <a href="/ordens/{{ordem.id}}" class="col-4 p-2 rounded bg-dark">
+                        <p>Id: {{ordem.id}}</p>
+                        <p>Placa #{{veiculo.placa}}</p>
+                        <p>{{veiculo.modelo}}</p>
+                    </a>
+                {% endfor %}
+                {% else %}
+                    <h4>Nenhuma ordem pendente</h4>
+                {% endif %}
+            </div>
+            <div class="row justify-content-center py-4">
+                <a href="edit/{{veiculo.id}}" class="btn btn-primary">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

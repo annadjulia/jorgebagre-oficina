@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'ordens',
     'pecas',
     'servicos',
+    'core',
 ]
 
 MIDDLEWARE = [

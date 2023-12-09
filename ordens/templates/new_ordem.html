@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block 'title' %}
-    Nova ordem de serviço
+Nova ordem de serviço
 {% endblock %}
 
 {% block 'content' %}
@@ -14,16 +14,16 @@
         <form action="/ordens/new" method="POST">
             {% csrf_token %}
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <label for="veiculo">Veículo</label>
                     <select name="veiculo_id" id="veiculo_id" class="form-control" required>
                         <option value=""></option>
                         {% for veiculo in veiculos %}
-                        <option value="{{ veiculo.id }}">{{ veiculo.placa }} - {{ veiculo.cliente.nome }}</option>
+                        <option value="{{ veiculo.id }}">#{{ veiculo.placa }} - {{ veiculo.cliente.nome }}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                     <label for="equipe">Equipe</label>
                     <select name="equipe_id" id="equipe_id" class="form-control" required>
                         <option value=""></option>
@@ -32,15 +32,22 @@
                         {% endfor %}
                     </select>
                 </div>
-                
-            </div>
-            <div class="row justify-content-center py-4">
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <div class="col-6">
+                    <label for="descricao">Descrição</label>
+                    <textarea name="descricao" id="descricao" cols="30" rows="2" class="form-control"
+                        required></textarea>
+                </div>
+                <div class="col-6">
+                    <label for="data_entrada">Data de entrega</label>
+                    <input type="date" name="data_entrega" id="data_entrega" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary lara">Salvar</button>
+                </div>
             </div>
         </form>
     </div>
 </div>
-<script>
-    
-</script>
+
 {% endblock %}

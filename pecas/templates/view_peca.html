@@ -7,7 +7,17 @@
 {% endblock %}
 
 {% block 'content' %}
-    {{peca.nome}}
-    {{peca.preco}}
-    <a href="/pecas/edit/{{peca.id}}" class="btn btn-primary">Editar</a>
+<div class="row">
+    <div class="col">
+        <div class="col">
+            <h3>Nome: <strong>{{peca.nome}}</strong></h3>
+            <h3>Preço: <strong>{{peca.preco}}</strong></h3>
+        </div>
+        <div class="col">
+            <div class="row justify-content-center py-4">
+                <a href="/pecas/edit/{{peca.id}}" class="btn btn-primary">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

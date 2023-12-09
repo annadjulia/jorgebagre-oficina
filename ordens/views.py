@@ -4,20 +4,25 @@ from .models import Ordem
 from clientes.models import Cliente
 from veiculos.models import Veiculo
 from equipes.models import Equipe
+from pecas.models import Peca
+from servicos.models import Servico
+import datetime
 
 # Create your views here.
 def ordens(request):
     ordens = Ordem.objects.all()
-    return render(request, 'ordens.html')
+    return render(request, 'ordens.html', {'ordens': ordens})
 
 def new_ordem(request):
     clientes = Cliente.objects.all()
     veiculos = Veiculo.objects.all()
     equipes = Equipe.objects.all()
+    pecas = Peca.objects.all()
+    servicos = Servico.objects.all()
     if request.method == 'GET':
-        return render(request, 'new_ordem.html', {'clientes': clientes, 'veiculos': veiculos, 'equipes': equipes})
+        return render(request, 'new_ordem.html', {'clientes': clientes, 'veiculos': veiculos, 'equipes': equipes, 'pecas': pecas, 'servicos': servicos})
     elif request.method == 'POST':
-        dataEmissao = request.POST.get('dataEmissao')
+        dataEmissao = datetime.date.today()
         dataEntrega = request.POST.get('dataEntrega')
         descricao = request.POST.get('descricao')
         valor = request.POST.get('valor')
