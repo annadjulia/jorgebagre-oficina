@@ -42,6 +42,63 @@ Nova ordem de serviço
                     <input type="date" name="data_entrega" id="data_entrega" class="form-control" required>
                 </div>
 
+                <div class="col-6">
+                    <div class="row" id="pecas">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="pecas">
+                                        Peças
+                                        <button type="button" class="btn btn-sm btn-primary" id="add_peca">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+
+                                    </label>
+                                    <select name="peca_id[]" id="peca_id" class="form-control" required>
+                                        <option value=""></option>
+                                        {% for peca in pecas %}
+                                        <option value="{{ peca.id }}">{{ peca.nome }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="Quantidade">Quantidade</label>
+                                    <input type="number" name="quantidade_peca[]" id="quantidade_peca"
+                                        class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row" id="servicos">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="servicos">
+                                        Serviços
+                                        <button type="button" class="btn btn-sm btn-primary" id="add_servico">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+
+                                    </label>
+                                    <select name="servico_id[]" id="servico_id" class="form-control" required>
+                                        <option value=""></option>
+                                        {% for servico in servicos %}
+                                        <option value="{{ servico.id }}">{{ servico.nome }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="Quantidade">Quantidade</label>
+                                    <input type="number" name="quantidade_servico[]" id="quantidade_servico"
+                                        class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary lara">Salvar</button>
                 </div>
@@ -50,4 +107,72 @@ Nova ordem de serviço
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $('#add_peca').click(function () {
+            $('#pecas').append(`
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="pecas">
+                                Peças
+                                <button type="button" class="btn btn-sm btn-danger" id="remove_peca">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+
+                            </label>
+                            <select name="peca_id[]" id="peca_id" class="form-control" required>
+                                <option value=""></option>
+                                {% for peca in pecas %}
+                                <option value="{{ peca.id }}">{{ peca.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="quantidade_peca[]" id="quantidade_peca" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+            `);
+        });
+
+        $('#add_servico').click(function () {
+            $('#servicos').append(`
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="servicos">
+                                Serviços
+                                <button type="button" class="btn btn-sm btn-danger" id="remove_servico">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+
+                            </label>
+                            <select name="servico_id[]" id="servico_id" class="form-control" required>
+                                <option value=""></option>
+                                {% for servico in servicos %}
+                                <option value="{{ servico.id }}">{{ servico.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="Quantidade">Quantidade</label>
+                            <input type="number" name="quantidade_servico[]" id="quantidade_servico" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+            `);
+        });
+
+        $(document).on('click', '#remove_peca', function () {
+            $(this).parent().parent().parent().remove();
+        });
+
+        $(document).on('click', '#remove_servico', function () {
+            $(this).parent().parent().parent().remove();
+        });
+    });
+    
+</script>
 {% endblock %}
